@@ -27,7 +27,7 @@ public class Main {
                 try {
                     board.drop(playerInput, player);
                 } catch (Exception e) {
-                    System.out.println("You can't go there!");
+                    System.out.println(addColorToString("You can't go there!", ConsoleColors.ANSI_PURPLE));
                     continue;
                 }
 
@@ -36,7 +36,10 @@ public class Main {
 
             if (board.checkWin(board.getBoard(), board.getLastRow(), board.getLastColumn(), board.getLastPlayer())) {
                 System.out.println(board);
-                System.out.printf("Congratulations player %d! You win!", player);
+
+                String winMessage = String.format("Congratulations Player %d! You win!", player);
+                System.out.print(addColorToString(winMessage, ConsoleColors.ANSI_YELLOW));
+
                 break;
             }
 
@@ -47,17 +50,28 @@ public class Main {
     }
 
     private static String getPlayerInput(Board board, Scanner scanner, int player) {
-        System.out.printf("PLayer %d: ", player);
-        while (true) {
-            String playerInput = scanner.nextLine().toUpperCase();
 
+        while (true) {
+            System.out.print(makePlayerString(player) + ": ");
+
+            String playerInput = scanner.nextLine().toUpperCase();
             if (board.letterToInt(playerInput) != -1) {
                 return playerInput;
             } else {
-                System.out.println("Invalid Input. Try again.");
+                System.out.println(addColorToString("Invalid Input. Try again.", ConsoleColors.ANSI_PURPLE));
             }
 
         }
+    }
+
+    private static String makePlayerString(int player) {
+        String playerString = "Player " + player;
+        String color = (player == 1 ? ConsoleColors.ANSI_RED : ConsoleColors.ANSI_BLUE);
+        return addColorToString(playerString, color);
+    }
+
+    private static String addColorToString(String string, String consoleColor) {
+        return consoleColor + string + ConsoleColors.ANSI_RESET;
     }
 
     private static void introduction(Scanner scanner) {
