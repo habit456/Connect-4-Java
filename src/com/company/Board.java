@@ -7,23 +7,22 @@ public class Board {
     private ArrayList<ArrayList<Integer>> board;
     private WinCheck winCheck = new WinCheck();
 
-    private int width = 7;
-    private int height = 6;
-
     private int lastRow;
     private int lastColumn;
     private int lastPlayer;
 
 
     public Board() {
+        int height = 6;
+        int width = 7;
         this.board = setUpBoard(width, height);
     }
 
     private ArrayList<ArrayList<Integer>> setUpBoard(int width, int height) {
-        ArrayList<ArrayList<Integer>> newBoard = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> newBoard = new ArrayList<>();
 
         for (int i = 0; i < height; i++) {
-            ArrayList<Integer> row = new ArrayList<Integer>();
+            ArrayList<Integer> row = new ArrayList<>();
 
             for (int j = 0; j < width; j++) {
                 row.add(0);
@@ -40,8 +39,8 @@ public class Board {
         StringBuilder boardString = new StringBuilder();
         boardString.append("\n");
 
-        for (ArrayList<Integer> row: board) {
-            for (Integer slot: row) {
+        for (ArrayList<Integer> row : board) {
+            for (Integer slot : row) {
                 switch (slot) {
                     case 1:
                         boardString.append(ConsoleColors.ANSI_RED);
@@ -87,7 +86,7 @@ public class Board {
     public int letterToInt(String input) {
         int num;
 
-        switch(input) {
+        switch (input) {
             case "A":
                 num = 0;
                 break;
@@ -118,14 +117,6 @@ public class Board {
 
     public boolean checkWin(ArrayList<ArrayList<Integer>> board, int row, int column, int player) {
         return winCheck.checkWin(board, row, column, player);
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
     }
 
     public ArrayList<ArrayList<Integer>> getBoard() {

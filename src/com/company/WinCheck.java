@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class WinCheck {
 
     public boolean checkWin(ArrayList<ArrayList<Integer>> board, int row, int column, int player) {
-        ArrayList<Boolean> directionChecks = new ArrayList<Boolean>();
+        ArrayList<Boolean> directionChecks = new ArrayList<>();
 
         directionChecks.add(checkHorizontal(board, row, player));
         directionChecks.add(checkVertical(board, column, player));
@@ -21,7 +21,7 @@ public class WinCheck {
     }
 
     private String getDiagonal1String(ArrayList<ArrayList<Integer>> board, int row, int column) {
-        ArrayList<Integer> al = new ArrayList<Integer>();
+        ArrayList<Integer> al = new ArrayList<>();
         int currentPosRow = row;
         int currentPosCol = column;
 
@@ -59,7 +59,7 @@ public class WinCheck {
     }
 
     private String getDiagonal2String(ArrayList<ArrayList<Integer>> board, int row, int column) {
-        ArrayList<Integer> al = new ArrayList<Integer>();
+        ArrayList<Integer> al = new ArrayList<>();
         int currentPosRow = row;
         int currentPosCol = column;
 
@@ -107,7 +107,7 @@ public class WinCheck {
     }
 
     private String getVerticalString(ArrayList<ArrayList<Integer>> board, int column) {
-        ArrayList<Integer> al = new ArrayList<Integer>();
+        ArrayList<Integer> al = new ArrayList<>();
 
         for (ArrayList<Integer> boardRow : board ) {
             al.add(boardRow.get(column));

@@ -9,7 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
         Board board = new Board();
-        WinCheck winCheck = new WinCheck();
         Scanner scanner = new Scanner(System.in);
 
         int player = 1;
